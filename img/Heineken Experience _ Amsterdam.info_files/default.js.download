@@ -1,0 +1,68 @@
+var $ = jQuery.noConflict();
+
+var CookieBar = {
+		cookieName: "amsterdam.info.accepted",
+		cookieDomain: "amsterdam.info",
+//		cookieDomain: "monkeys.info",
+//		cookieDomain: "no-domain",
+//		cookieDomain: "localhost",
+		
+		expire: function(){
+		    // EXPIRE:
+		    document.cookie = this.cookieName + "=yes; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; domain="+this.cookieDomain;
+		    
+		},
+		setCookie: function(name, value, expireDays) {
+			var d = new Date();
+		    d.setTime(d.getTime() + (expireDays*24*60*60*1000));
+		    var expires = "expires="+d.toUTCString();
+		    document.cookie = name + "=" + value + "; " + expires + "; path=/; domain="+this.cookieDomain;
+
+		    
+		},
+		isAccepted: function() {
+			var cookies = document.cookie.split(";");
+			console.log("check accepted cookies: ");
+			console.log(cookies);
+
+			for(var i = 0; i < cookies.length; i++) {
+				var cookie = $.trim(cookies[i]).split("=");
+//				console.log(".. trying: "+cookie);
+				if($.trim(cookie[0]) == this.cookieName) return true;
+			}
+			return false;
+		},
+		accept: function(){
+			this.setCookie(this.cookieName, "yes", 365);
+			$("#cookiesbox").hide();
+		},
+		check: function() {
+			if(this.isAccepted()){
+//				console.log("cookies accepted");
+//				$("#cookiesbox").hide();
+			}
+			else {
+//				console.log("cookies NOT accepted");
+				$("#cookiesbox").show();
+			}
+		}
+	};
+$(document).ready(function() {
+	$("#cookiesbox").hide();
+	
+//	CookieBar.expire();
+	CookieBar.check();
+	
+	$('.about a.image-popup').magnificPopup({ 
+	  	type: 'image',
+	  	image: { 
+			titleSrc: 'alt'
+	  	}
+	});
+
+	$('#show-mobile-menu').on('click', function(e) {
+		e.preventDefault();
+		jQuery(this).toggleClass('revealed');
+		jQuery('#leftside').toggleClass('reveal');
+	});
+});

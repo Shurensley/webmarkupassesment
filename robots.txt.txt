@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /656232/forbidden
+Sitemap: /656232/sitemap.xml

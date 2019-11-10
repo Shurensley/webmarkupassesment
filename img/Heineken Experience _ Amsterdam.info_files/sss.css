@@ -1,0 +1,71 @@
+.sss {
+	height: 0;
+	margin: 0 0 20px 0; 
+	padding: 0;
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+
+.ssslide {
+	width: 100%;
+	margin: 0 !important;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	overflow: hidden;
+}
+
+.ssslide img {
+	max-width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: block;
+}
+
+.sssnext, .sssprev {
+	width: 25px;
+	height: 100%;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	background: url('images/arr.png') no-repeat;
+}
+
+.sssprev {
+	left: 3%;
+	background-position: 0 50%;
+}
+
+.sssnext {
+	right: 3%;
+	background-position: -26px 50%;
+}
+
+.sssprev:hover, .sssnext:hover {
+	cursor: pointer;
+}
+
+.ssscaption {
+    position: absolute;
+    display: block;
+    font: 13px Arial, Helvetica, sans-serif;
+    bottom: 1em;
+    left: 0;
+    margin: 0.5em;
+    margin-left: 0;
+    padding: 0.35em;
+    background: #F0F0F0;
+    color: #000000;
+    z-index: 50;
+    border-radius: 0 0.6em 0.6em 0;
+    opacity: 1;
+}
+
+@media screen and (max-width: 470px) {
+.ssslide { max-width: 100% !important; width: 100% !important; }
+}
